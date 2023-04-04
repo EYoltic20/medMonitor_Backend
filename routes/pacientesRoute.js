@@ -1,10 +1,9 @@
-const { Route } = require('express');
 const express = require('express')
 const router = express.Router();
-// const PacientesService = require('../services/pacientesServices');
+
 const PacientesService = require('../services/pacientesServices')
 const service = new PacientesService();
-// const services = new PacientesService();
+
 
 
 // GET methods
