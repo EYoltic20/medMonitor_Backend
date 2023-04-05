@@ -3,14 +3,16 @@ const express = require('express');
 const { ClientRequest } = require('http');
 const app = express();
 const bp = require('body-parser');
+const cosr = require('cors')
 // const { port } = require('pg/lib/defaults');
 
 const port = process.env.PORT || 3001;
 const route = require('./routes');
 const apiRoute = require('./routes');
 
-app.use(express.json());
 
+app.use(express.json());
+app.use(cors());
 // ROUTAS
 apiRoute(app)
 
