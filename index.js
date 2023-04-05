@@ -1,13 +1,12 @@
 // const client = require('./conections');
 const express = require('express');
-const { ClientRequest } = require('http');
+// const { ClientRequest } = require('http')
 const app = express();
 const bp = require('body-parser');
-const cosr = require('cors')
+const cors = require('cors')
 // const { port } = require('pg/lib/defaults');
 
-app.set('port',process.env.PORT||3000);
-const route = require('./routes');
+app.set('port',process.env.PORT||3001);
 const apiRoute = require('./routes');
 
 
