@@ -13,6 +13,9 @@ const apiRoute = require('./routes');
 
 app.use(express.json());
 app.use(cors());
+app.get("/",(req,res)=>{
+  res.send("Hola de mi server")
+})
 // ROUTAS
 apiRoute(app)
 
