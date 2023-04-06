@@ -1,4 +1,5 @@
 const fake = require('faker');
+const boom = require('@hapi/boom')
 
 class PacientesService{
   constructor(){
@@ -11,12 +12,12 @@ class PacientesService{
     const names = ['Yoltic','Diego','Alan']
     for (let i = 0 ; i<3; i++){
       this.pacientes.push({
-        id:i+1,
+        id:fake.datatype.uuid(),
         nombre:names[i],
-        user:fake.internet.avatar(),
+        user:fake.internet.email(),
         password:fake.internet.password(),
         correo:fake.internet.email(),
-        birthday:[''],
+        birthday:'marzo',
         genero: 'male'
       });
     }
@@ -24,15 +25,19 @@ class PacientesService{
   get_all(){
     return this.pacientes;
   }
-  get_only_id(id){
-    return this.pacientes.find(item => item.id === id );
+  async get_only_id(id){
+    const paciente =  this.pacientes.find(item => item.id === id );
+    if(!paciente){
+      throw boom.notFound("no se encontro el paciente");
+    }
+    return paciente
   }
-  create(new_user){
+  async create(new_user){
     try {
       this.pacientes.push(new_user);
       return 'ok'
     }catch (error){
-      return error
+      throw boom.serverUnavailable
     }
   }
 

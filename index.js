@@ -4,6 +4,7 @@ const express = require('express');
 const app = express();
 const bp = require('body-parser');
 const cors = require('cors')
+const {logError,boomErrorHandler,errorHandler} = require('./Middlerwares/errorHandler')
 // const { port } = require('pg/lib/defaults');
 
 app.set('port',process.env.PORT||3001);
@@ -12,6 +13,12 @@ const apiRoute = require('./routes');
 
 app.use(express.json());
 app.use(cors());
+// Mids
+app.use(logError);
+app.use(boomErrorHandler);
+app.use(errorHandler);
+
+
 app.get("/",(req,res)=>{
   res.send("Hola de mi server")
 })
