@@ -16,7 +16,7 @@ const publishSintom  = joi.object({
   intensidad:valorIntensidad.required(),
   estado:estadoSintoma.required(),
   frecuencia:fr.required(),
-  notas:notas.required(),
+  notas:notas,
   paciente_id:paciente_id.required()
 });
 
