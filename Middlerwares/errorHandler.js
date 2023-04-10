@@ -14,7 +14,7 @@ function boomErrorHandler(err,req,res,next){
 // npi que paso
 function errorHandler(err,req,res,next){
   res.statusCode(err.status || 500);
-  res.send({"error":true,"messages":err.messages||"Internal server error"})
+  res.send({"error":true,"messages":err.message||"Internal server error"})
 }
 
 module.exports = {logError,boomErrorHandler,errorHandler};
