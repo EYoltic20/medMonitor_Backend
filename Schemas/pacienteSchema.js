@@ -1,6 +1,6 @@
 const joi = require('joi');
 // Para buscar un sitoma o paciente
-const id = joi.string().uuid();
+const id = joi.string();
 const nombre = joi.string().empty()
 const user = joi.string()
 const password = joi.string().min(5).max(20)

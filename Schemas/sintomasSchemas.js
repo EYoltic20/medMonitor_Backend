@@ -1,7 +1,7 @@
 const joi = require('joi');
 
 
-const sintoma_id = joi.string().uuid();
+const sintoma_id = joi.string();
 const estadoSintoma = joi.boolean();
 const valorIntensidad = joi.number().integer().min(1).max(10);
 const recordar =joi.boolean();

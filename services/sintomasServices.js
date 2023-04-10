@@ -11,7 +11,7 @@ class SintomasService{
     for(let i = 0 ; i<20;i++){
       this.sintomas.push({
         id:faker.datatype.uuid(),
-        sintoma:sintomas_iniciales[Math.floor(Math.random()*7+1)],
+        sintoma:sintomas_iniciales[Math.floor(Math.random()*7)],
         intensidad:[Math.floor(Math.random()*10+1)],
         estado:true,
         frecuencia:faker.date.past(),

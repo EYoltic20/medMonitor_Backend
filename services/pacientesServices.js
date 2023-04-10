@@ -12,7 +12,7 @@ class PacientesService{
     const names = ['Yoltic','Diego','Alan']
     for (let i = 0 ; i<3; i++){
       this.pacientes.push({
-        id:fake.datatype.uuid(),
+        id:i+1,
         nombre:names[i],
         user:fake.internet.email(),
         password:fake.internet.password(),
