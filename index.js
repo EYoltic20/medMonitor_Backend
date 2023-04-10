@@ -14,6 +14,10 @@ const apiRoute = require('./routes');
 app.use(express.json());
 app.use(cors());
 // Mids
+
+// ROUTAS
+apiRoute(app)
+
 app.use(logError);
 app.use(boomErrorHandler);
 app.use(errorHandler);
@@ -22,8 +26,7 @@ app.use(errorHandler);
 app.get("/",(req,res)=>{
   res.send("Hola de mi server")
 })
-// ROUTAS
-apiRoute(app)
+
 
 
 

@@ -41,10 +41,10 @@ class PacientesService{
     }
   }
 
-  delete(id){
+   async delete(id){
     const idx = this.pacientes.findIndex(item => item.id === id);
     if (idx == -1){
-      return "this user does not exist"
+      throw boom.notFound
     }else{
       this.pacientes.splice(idx,1);
       return "ok";
