@@ -3,7 +3,8 @@ const router = express.Router();
 
 const SintomasService = require('../services/sintomasServices')
 const validatorHandler = require('../Middlerwares/validatorHandler')
-const {getSitoma,publishSintom} = require('../Schemas/sintomasSchemas')
+const {getSitoma,publishSintom} = require('../Schemas/sintomasSchemas');
+const { route } = require('./pacientesRoute');
 const service = new SintomasService();
 
 
@@ -25,4 +26,8 @@ router.post('/',(req,res)=>{
   const response = service.create_sintome(body)
   res.json(response);
 })
+
+// BORRAR
+router
+
 module.exports = router;

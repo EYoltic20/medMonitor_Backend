@@ -13,7 +13,6 @@ class SintomasService{
         id:faker.datatype.uuid(),
         sintoma:sintomas_iniciales[Math.floor(Math.random()*7)],
         intensidad:[Math.floor(Math.random()*10+1)],
-        estado:true,
         frecuencia:faker.date.past(),
         terminar:false,
         notas:[],
