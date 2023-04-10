@@ -13,14 +13,14 @@ router.get('/',(req,res)=>{
   res.json(sintomas)
 })
 
-router.get('/:id',validatorHandler(getSitoma,'req.params'),(req,res)=>{
+router.get('/:id',validatorHandler(getSitoma,'params'),(req,res)=>{
   const {id} = req.params;
   const sintomas = service.get_sintomas(parseInt(id));
   res.json(sintomas)
 })
 
 // POST METHODS
-router.post('/',validatorHandler(publishSintom,'req.body'),(req,res)=>{
+router.post('/',validatorHandler(publishSintom,'body'),(req,res)=>{
   const body = req.body
   const response = service.create_sintome(body)
   res.json(response);
