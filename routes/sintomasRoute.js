@@ -35,7 +35,7 @@ router.post('/',validatorHandler(publishSintom,'body'),async (req,res,next)=>{
   try{
     const body = req.body
     const response = await service.create_sintome(body)
-    res.status(200).json({'status':response});
+    res.status(200).json(req.body);
   }catch(error){
     next(error)
   }

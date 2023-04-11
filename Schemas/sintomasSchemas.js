@@ -11,7 +11,7 @@ const notas = joi.string();
 const paciente_id = joi.string();
 
 const publishSintom  = joi.object({
-  id : sintoma_id.required(),
+  id : sintoma_id,
   sintoma : sintoma.required(),
   intensidad:valorIntensidad.required(),
   estado:estadoSintoma.required(),
