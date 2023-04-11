@@ -10,8 +10,8 @@ const {logError,boomErrorHandler,errorHandler} = require('./Middlerwares/errorHa
 app.set('port',process.env.PORT||3001);
 const apiRoute = require('./routes');
 
-
-app.use(express.json());
+app.use(bp.urlencoded({ extended: false }));
+app.use(bp.json());
 app.use(cors());
 // Mids
 
