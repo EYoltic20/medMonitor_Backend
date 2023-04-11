@@ -31,7 +31,7 @@ router.get('/:id',validatorHandler(getSitoma,'params'),async (req,res,next)=>{
 
 // /,validatorHandler(publishSintom,'body')
 // POST METHODS
-router.post('/',validatorHandler(publishSintom,'body'),async (req,res,next)=>{
+router.post('/',async (req,res,next)=>{
   try{
     const body = req.body
     const response = await service.create_sintome(body)
