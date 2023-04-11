@@ -38,7 +38,9 @@ class SintomasService{
   }
   async create_sintome(body){
     try{
-      this.sintomas.push(body)
+      this.sintomas.push({
+        ...body
+      })
       return 'ok'
     }catch(error){
       throw error
