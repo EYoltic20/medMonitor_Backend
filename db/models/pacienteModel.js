@@ -1,5 +1,5 @@
 const {Model,Sequelize, DataTypes} = require('sequelize');
-
+const {DOCTOR_TABLE} = require('./doctorModel');
 const PACIENTE_TABLE = 'paciente';
 const PacienteSchema ={
   id:{
@@ -41,6 +41,16 @@ const PacienteSchema ={
     type: DataTypes.DATE,
     field: 'create_at',
     defaultValue:Sequelize.NOW
+  },doctor_id:{
+    field:"pacienteID",
+    allowNull:true,
+    type:DataTypes.INTEGER,
+    references:{
+      model:PACIENTE_TABLE,
+      key:"id"
+    },
+    onUpdate:"CASCADE",
+    onDelete:"SET NULL"
   }
 }
 class Paciente extends Model{
@@ -50,13 +60,14 @@ class Paciente extends Model{
       as:"sintoma",
       foreignKey:"paciente_id"
     })
+    // this.belongsToMany(models.Doctor,{through:models.Doctor})
   }
   static config(sequelize){
     return{
     sequelize,
     tableName:PACIENTE_TABLE,
     modelName:'Paciente',
-    timestamps:false
+    timestamps:true
     }
   }
 }

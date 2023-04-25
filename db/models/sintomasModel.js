@@ -1,4 +1,3 @@
-
 const {Model,Sequelize, DataTypes} = require('sequelize');
 
 const {PACIENTE_TABLE} = require('./pacienteModel');
@@ -41,8 +40,8 @@ const SintomaSchema ={
 }
 
 class Sintoma extends Model{
-   static associate(models){
-    this.belongsTo(models.Paciente,
+   static associate(model){
+    this.belongsTo(model.Paciente,
       {as:'paciente'}
     )
    }
@@ -50,7 +49,7 @@ class Sintoma extends Model{
      return{
        sequelize,
        tableName:SINTOM_TABLE,
-       modelName:'Sintoma',
+       modelName:"Sintoma",
        timestamps:false
      }
    }

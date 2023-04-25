@@ -38,5 +38,9 @@ const endSintom = joi.object({
   id:sintoma_id.required(),
   paciente_id:paciente_id.required()
 })
+const startSintom = joi.object({
+  id:sintoma_id.required(),
+  paciente_id:paciente_id.required()
+})
 
-module.exports = {getSitoma,publishSintom,updateSintomValue,endSintom}
+module.exports = {getSitoma,publishSintom,updateSintomValue,endSintom,startSintom}

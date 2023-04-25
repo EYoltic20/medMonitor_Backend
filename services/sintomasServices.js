@@ -20,7 +20,7 @@ class SintomasService{
     return sintomas
   }
   async get_sintomas_paciente(pacientes_id){
-    const getSintoma = await models.Sintoma.findOne({
+    const getSintoma = await models.Sintoma.findAll({
       where:{
         paciente_id:pacientes_id
       }
@@ -29,13 +29,16 @@ class SintomasService{
   }
 
   async create_sintome(body){
-    // if
     const nuevoSintoma = await models.Sintoma.create(body)
     return nuevoSintoma
   }
 
-  async delete(id){
-    // const borrarSintoma = await
+  async delete(body){
+    const {id,paciente_id} = body
+    const borrar = await models.Sintoma.destroy({where:{
+      id:id,
+      paciente_id:paciente_id
+    }})
   }
   async updateSintoma(id,changes){
     const sintoma = models.Sintoma.getSintoma(id)
@@ -45,17 +48,29 @@ class SintomasService{
   //Terminar trackeo de sintoma
   async endSintom(body){
     const {id,paciente_id} = body;
-    const newValue = true
-    const pacienteSintom = await this.get_sintomas_paciente(paciente_id)
-    const terminarsintom = await pacienteSintom.update({
-      terminarSintoma:true
-    },{
+    const updatedValue = {terminarSintoma:true}
+    // const pacienteSintom = await this.get_sintomas_paciente(paciente_id)
+    const terminarsintom = await models.Sintoma.update(updatedValue,{
       where:{
-        id:id
+        id:id,
+        paciente_id:paciente_id
       }
     }
     )
     return terminarsintom
+  }
+  async startSintoma(body){
+    const {id,paciente_id} = body;
+    const updatedValue = {terminarSintoma:false}
+    // const pacienteSintom = await this.get_sintomas_paciente(paciente_id)
+    const startSintom = await models.Sintoma.update(updatedValue,{
+      where:{
+        id:id,
+        paciente_id:paciente_id
+      }
+    }
+    )
+    return startSintom
   }
   // Modificar la intensidad y las notas
   async updateIntensidad (body){
