@@ -4,22 +4,28 @@ const router = express.Router();
 
 const SintomasService = require('../services/sintomasServices')
 const validatorHandler = require('../Middlerwares/validatorHandler')
-const {getSitoma,publishSintom} = require('../Schemas/sintomasSchemas');
+const {getSitoma,publishSintom,updateSintomValue,endSintom} = require('../Schemas/sintomasSchemas');
 const service = new SintomasService();
 
 
 // GET METHODS
 // OBTENER TODOS LOS SINTOMAS
-router.get('/',(req,res)=>{
+router.get('/',async (req,res,next)=>{
+  try{
   const sintomas = service.all();
-  res.json(sintomas)
+  sintomas.then((data)=>{
+    res.json(data)
+  })
+  }catch{
+    next(error)
+  }
 })
 
 // OBTENER LOS SINTOMAS DE UN PACIENTE EN ESPECIFICO
 router.get('/:id',validatorHandler(getSitoma,'params'),async (req,res,next)=>{
   try{
     const {id} = req.params;
-    const sintomas = await service.get_sintomas(id);
+    const sintomas = await service.get_sintomas_paciente(id);
     res.json(sintomas)
   }catch(error){
     next(error)
@@ -35,12 +41,32 @@ router.post('/',async (req,res,next)=>{
   try{
     const body = req.body
     const response = await service.create_sintome(body)
-    res.status(200).json(req.body);
+    res.status(201).json(response);
   }catch(error){
     next(error)
   }
 
 })
+// UPDATE
+router.patch('/intensidad',validatorHandler(updateSintomValue),async (req,res,next)=>{
+  try{
+    const body = req.body;
+    const response = await service.updateIntensidad(body)
+    res.status(200).json("ok")
+  }catch(error){
+    next(error)
+  }
+})
+router.patch('/endSintom',validatorHandler(endSintom),async(req,res,next)=>{
+  try{
+    const body = req.body;
+    const response = await service.endSintom(body)
+    res.status(200).json("ok")
+  }catch(error){
+    next(error)
+  }
+})
+
 
 // BORRAR
 // router

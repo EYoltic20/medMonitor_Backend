@@ -12,8 +12,6 @@ const birthdate = joi.string();
 const gender = joi.string();
 
 
-
-
 const getPaciente = joi.object({
   id:id.required()
 })

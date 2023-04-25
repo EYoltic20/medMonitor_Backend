@@ -8,28 +8,20 @@ const {publishNewPacient,getPaciente} = require('../Schemas/pacienteSchema')
 const validatorHandler = require('../Middlerwares/validatorHandler')
 
 
+
+
 // GET methods
 
 // Todos los usuarios
-router.get('/',(req,res,next)=>{
-  // client.query('SELECT * FROM paciente',(err,result)=>{
-  //     if(!err){
-  //         res.send(result.rows);
-  //     }else{
-  //         res.send(err)
-  //     }
-  // })
-  // client.end;
+router.get('/',async (req,res,next)=>{
   try{
     const pacientes = service.get_all()
-    res.json({
-      pacientes
+    pacientes.then((data)=>{
+      res.json(data)
     })
   }catch(error){
     next(error)
   }
-
-
 });
 
 // SOLO UN USUARIO

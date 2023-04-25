@@ -2,75 +2,78 @@ const boom = require('@hapi/boom');
 const { is } = require('express/lib/request');
 const faker = require("faker");
 const { it } = require('faker/lib/locales');
+const { not } = require('joi');
+const { where } = require('sequelize');
+const sequelize = require('./../libs/sequelize');
 
-const sintomas_iniciales = ['Tos','Dolor de cabeza','Fiebre','Dolor de garganta','Ojos rojos','Dolor de cuello','Migraña']
+const {models} = require('./../libs/sequelize')
 
 class SintomasService{
 
 
   constructor(){
-    this.sintomas=[]
-    this.generate()
+
   }
 
-  generate(){
-    for(let i = 0 ; i<20;i++){
-      this.sintomas.push({
-        id:i+1,
-        sintoma:sintomas_iniciales[Math.floor(Math.random()*7)],
-        intensidad:[Math.floor(Math.random()*10+1)],
-        frecuencia:faker.date.past(),
-        terminar:false,
-        notas:[],
-        paciente_id:Math.floor(Math.random()*3+1)
-      })
-    }
+  async all(){
+    const sintomas = await models.Sintoma.findAll()
+    return sintomas
   }
-  all(){
-    return this.sintomas
+  async get_sintomas_paciente(pacientes_id){
+    const getSintoma = await models.Sintoma.findOne({
+      where:{
+        paciente_id:pacientes_id
+      }
+    })
+    return getSintoma
   }
-  async get_sintomas(pacientes_id){
-    try{
-    return this.sintomas.filter(item =>item.paciente_id == pacientes_id)
-    }catch(error){
-      return error
-    }
-  }
+
   async create_sintome(body){
-    try{
-      this.sintomas.push({
-        ...body
-      })
-      return 'ok'
-    }catch(error){
-      throw error
-    }
+    // if
+    const nuevoSintoma = await models.Sintoma.create(body)
+    return nuevoSintoma
   }
 
   async delete(id){
-
-    const isInThedb = this.sintomas.find(item => item.id == id)
-    if(isInThedb){
-      try{
-        this.sintomas = this.sintomas.filter((item)=>{
-          return item.id !== id
-        })
-        return 'ok'
-      }catch(error){
-        return error
-      }
-
-    }else{
-      throw boom.notFound
-    }
-  //   const idx = this.sintomas.findIndex(item => item.id === id);
-  //   if (idx == -1){
-  //     throw boom.notFound
-  //   }else{
-  //     this.pacientes.splice(idx,1);
-  //     return "ok";
-  //   }
+    // const borrarSintoma = await
   }
+  async updateSintoma(id,changes){
+    const sintoma = models.Sintoma.getSintoma(id)
+    const response = await sintoma.update(changes)
+    return response
+  }
+  //Terminar trackeo de sintoma
+  async endSintom(body){
+    const {id,paciente_id} = body;
+    const newValue = true
+    const pacienteSintom = await this.get_sintomas_paciente(paciente_id)
+    const terminarsintom = await pacienteSintom.update({
+      terminarSintoma:true
+    },{
+      where:{
+        id:id
+      }
+    }
+    )
+    return terminarsintom
+  }
+  // Modificar la intensidad y las notas
+  async updateIntensidad (body){
+    const {id,paciente_id,intensidad,notas} = body
+    const pacienteSintom = await this.get_sintomas_paciente(paciente_id)
+    const pacienteChange = await pacienteSintom.update(
+      {
+        intensidad:sequelize.fn('ARRAY_APPEND',sequelize.col("intensidad"),intensidad),
+        notas:sequelize.fn('ARRAY_APPEND',sequelize.col("notas"),notas)
+      },{
+      where:{
+        id:id
+      }
+    }
+    )
+    return pacienteChange
+  }
+
 
 }
 
