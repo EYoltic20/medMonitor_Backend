@@ -41,16 +41,6 @@ const PacienteSchema ={
     type: DataTypes.DATE,
     field: 'create_at',
     defaultValue:Sequelize.NOW
-  },doctor_id:{
-    field:"pacienteID",
-    allowNull:true,
-    type:DataTypes.INTEGER,
-    references:{
-      model:PACIENTE_TABLE,
-      key:"id"
-    },
-    onUpdate:"CASCADE",
-    onDelete:"SET NULL"
   }
 }
 class Paciente extends Model{
@@ -67,7 +57,7 @@ class Paciente extends Model{
     sequelize,
     tableName:PACIENTE_TABLE,
     modelName:'Paciente',
-    timestamps:true
+    timestamps:false
     }
   }
 }
