@@ -1,5 +1,4 @@
 const {Model,Sequelize, DataTypes} = require('sequelize');
-const {DOCTOR_TABLE} = require('./doctorModel');
 const PACIENTE_TABLE = 'paciente';
 const PacienteSchema ={
   id:{
