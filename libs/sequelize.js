@@ -4,14 +4,6 @@ const {Sequelize} = require('sequelize');
 const {config} = require('./../config/config');
 const setUPModels = require('./../db/models/index.js')
 
-let URI = '';
-if(config.isProd){
-  URI=config.dbUrl;
-}else{
-const user = encodeURIComponent(config.dbUser)
-const password = encodeURIComponent(config.dbPassword)
-URI = `postgres://${user}:${password}@${config.dbHost}:${config.dbPort}/${config.dbName}`
-}
 
 const options = {
   dialect:'postgres',
@@ -23,7 +15,7 @@ if(config.isProd){
     rejectUnauthorized:false
   }
 }
-const sequelize = new Sequelize (URI,options)
+const sequelize = new Sequelize (config.dbUrl,options)
 
 setUPModels(sequelize)
 // sequelize.sync()
