@@ -20,7 +20,7 @@ const options = {
 }
 
 if(config.isProd){
-  option.ssl={
+  options.ssl={
     rejectUnauthorized:false
   }
 }
