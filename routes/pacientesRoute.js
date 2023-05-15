@@ -64,9 +64,9 @@ router.post('/login',async(req,res,next)=>{
   try{
     const body = req.body
     const response = await service.login(body);
-    res.statusCode(404).json(response)
+    res.status(200).json(response)
   }catch(error){
-    res.json("no hackes")
+    next(error)
   }
 
 })
