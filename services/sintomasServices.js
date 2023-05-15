@@ -1,9 +1,4 @@
 const boom = require('@hapi/boom');
-const { is } = require('express/lib/request');
-const faker = require("faker");
-const { it } = require('faker/lib/locales');
-const { not } = require('joi');
-const { where } = require('sequelize');
 const sequelize = require('./../libs/sequelize');
 
 const {models} = require('./../libs/sequelize')
@@ -91,5 +86,9 @@ class SintomasService{
 
 
 }
+
+
+// LOOGIN
+
 
 module.exports = SintomasService;

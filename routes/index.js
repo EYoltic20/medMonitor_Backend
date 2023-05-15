@@ -1,5 +1,5 @@
 const express = require('express');
-const sintomaRoute = require('./sintomasRoute')
+const sintomaRoute = require('./sintomasRoute');
 const pacienteRoute = require('./pacientesRoute');
 function apiRoute(app){
   const router = express.Router();

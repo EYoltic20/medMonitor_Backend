@@ -5,7 +5,8 @@ const router = express.Router();
 const PacientesService = require('../services/pacientesServices')
 const service = new PacientesService();
 const {getPaciente} = require('../Schemas/pacienteSchema')
-const validatorHandler = require('../Middlerwares/validatorHandler')
+const validatorHandler = require('../Middlerwares/validatorHandler');
+const boom = require('@hapi/boom')
 
 
 
@@ -23,6 +24,7 @@ router.get('/',async (req,res,next)=>{
     next(error)
   }
 });
+
 
 // SOLO UN USUARIO
 router.get('/:id',validatorHandler(getPaciente,'params'),async(req,res,next)=>{
@@ -46,6 +48,25 @@ router.post('/',async(req,res,next)=>{
     res.json(response);
   }catch(error){
     next(error)
+  }
+
+})
+router.post('/cuadro_clinico',async (req,res,next)=>{
+  try{
+    const body = req.body
+    const response = await service.new_cuadro(body)
+    res.statusCode(200).json("ok")
+  }catch(error){
+    next(erro)
+  }
+});
+router.post('/login',async(req,res,next)=>{
+  try{
+    const body = req.body
+    const response = await service.login(body);
+    res.statusCode(404).json(response)
+  }catch(error){
+    res.json("no hackes")
   }
 
 })

@@ -8,7 +8,7 @@ const URI = `postgres://${user}:${password}@${config.dbHost}:${config.dbPort}/${
 
 module.exports = {
   development: {
-    url: config.DATABASE_URL,
+    url: config.dbUrl,
     dialect: 'postgres',
   },
   production: {
