@@ -48,7 +48,7 @@ class Paciente extends Model{
   static associate(models){
     this.hasMany(models.Sintoma,{
       as:"sintoma",
-      foreignKey:"paciente_id"
+      foreignKey:"pacienteID"
     })
     // this.belongsToMany(models.Doctor,{through:models.Doctor})
   }
