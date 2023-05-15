@@ -15,6 +15,7 @@ const apiRoute = require('./routes');
 app.use(bp.urlencoded({ extended: false }));
 
 app.use(cors());
+
 // Mids
 
 // ROUTAS
