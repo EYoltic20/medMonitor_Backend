@@ -19,7 +19,8 @@ class PacientesService{
     return paciente
   }
   async create(new_user){
-
+    const paciente  = await models.Paciente.create(new_user);
+    return paciente;
   }
   async update(id,changes){
     const paciente = this.get_only_id(id)

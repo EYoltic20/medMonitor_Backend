@@ -16,14 +16,14 @@ const getPaciente = joi.object({
   id:id.required()
 })
 
-const publishNewPacient = joi.object({
-  id:id.required(),
-  nombre : nombre.required(),
-  user:user.required(),
-  password:password.required(),
-  correo:email.required(),
-  birthday:birthdate.required(),
-  genero:gender
-})
+// const publishNewPacient = joi.object({
+//   id:id.required(),
+//   nombre : nombre.required(),
+//   user:user.required(),
+//   password:password.required(),
+//   correo:email.required(),
+//   birthday:birthdate.required(),
+//   genero:gender
+// })
 
 module.exports = {publishNewPacient,getPaciente}

@@ -37,9 +37,9 @@ router.get('/:id',validatorHandler(getPaciente,'params'),async(req,res,next)=>{
 })
 
 
-
+// ,validatorHandler(publishNewPacient,'body')
 // POST METHOD
-router.post('/',validatorHandler(publishNewPacient,'body'),async(req,res,next)=>{
+router.post('/',async(req,res,next)=>{
   try{
     const body = req.body
     const response = await service.create(body);
