@@ -8,10 +8,12 @@ const {logError,boomErrorHandler,errorHandler} = require('./Middlerwares/errorHa
 // const { port } = require('pg/lib/defaults');
 
 app.set('port',process.env.PORT||3001);
+app.use(bp.json());
+
 const apiRoute = require('./routes');
 
 app.use(bp.urlencoded({ extended: false }));
-app.use(bp.json());
+
 app.use(cors());
 // Mids
 
