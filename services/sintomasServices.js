@@ -74,8 +74,8 @@ class SintomasService{
   }
   // Modificar la intensidad y las notas
   async updateIntensidad (body){
-    const {id,paciente_id,intensidad,notas} = body
-    const pacienteSintom = await this.get_sintomas_paciente(paciente_id)
+    const {id,pacienteId,intensidad,notas} = body
+    const pacienteSintom = await this.get_sintomas_paciente(pacienteId)
     const pacienteChange = await pacienteSintom.update(
       {
         intensidad:sequelize.fn('ARRAY_APPEND',sequelize.col("intensidad"),intensidad),
