@@ -26,4 +26,4 @@ const getPaciente = joi.object({
 //   genero:gender
 // })
 
-module.exports = {publishNewPacient,getPaciente}
+module.exports = {getPaciente}

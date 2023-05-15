@@ -4,7 +4,7 @@ const router = express.Router();
 
 const PacientesService = require('../services/pacientesServices')
 const service = new PacientesService();
-const {publishNewPacient,getPaciente} = require('../Schemas/pacienteSchema')
+const {getPaciente} = require('../Schemas/pacienteSchema')
 const validatorHandler = require('../Middlerwares/validatorHandler')
 
 
