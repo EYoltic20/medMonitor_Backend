@@ -1,18 +1,18 @@
 // const client = require('./conections');
 const express = require('express');
 // const { ClientRequest } = require('http')
-const app = express();
-const bp = require('body-parser');
+
 const cors = require('cors')
 const {logError,boomErrorHandler,errorHandler} = require('./Middlerwares/errorHandler')
 // const { port } = require('pg/lib/defaults');
 
+
+const app = express();
 app.set('port',process.env.PORT||3001);
-app.use(bp.json());
+app.use(express.json());
 
 const apiRoute = require('./routes');
 
-app.use(bp.urlencoded({ extended: false }));
 
 app.use(cors());
 
