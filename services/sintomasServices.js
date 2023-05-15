@@ -47,26 +47,26 @@ class SintomasService{
   }
   //Terminar trackeo de sintoma
   async endSintom(body){
-    const {id,paciente_id} = body;
+    const {id,pacienteId} = body;
     const updatedValue = {terminarSintoma:true}
     // const pacienteSintom = await this.get_sintomas_paciente(paciente_id)
     const terminarsintom = await models.Sintoma.update(updatedValue,{
       where:{
         id:id,
-        paciente_id:paciente_id
+        pacienteId:pacienteId
       }
     }
     )
     return terminarsintom
   }
   async startSintoma(body){
-    const {id,paciente_id} = body;
+    const {id,pacienteId} = body;
     const updatedValue = {terminarSintoma:false}
     // const pacienteSintom = await this.get_sintomas_paciente(paciente_id)
     const startSintom = await models.Sintoma.update(updatedValue,{
       where:{
         id:id,
-        paciente_id:paciente_id
+        pacienteId:pacienteId
       }
     }
     )
@@ -75,14 +75,14 @@ class SintomasService{
   // Modificar la intensidad y las notas
   async updateIntensidad (body){
     const {id,pacienteId,intensidad,notas} = body
-    const pacienteSintom = await this.get_sintomas_paciente(pacienteId)
-    const pacienteChange = await pacienteSintom.update(
+    const pacienteChange = await this.Sintoma.update(
       {
         intensidad:sequelize.fn('ARRAY_APPEND',sequelize.col("intensidad"),intensidad),
         notas:sequelize.fn('ARRAY_APPEND',sequelize.col("notas"),notas)
       },{
       where:{
-        id:id
+        id:id,
+        pacienteId:pacienteId
       }
     }
     )
