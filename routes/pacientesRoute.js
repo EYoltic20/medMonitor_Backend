@@ -64,7 +64,7 @@ router.post('/login',async(req,res,next)=>{
   try{
     const body = req.body
     const response = await service.login(body);
-    res.status(200).json(response)
+    res.status (200).json(response)
   }catch(error){
     next(error)
   }
