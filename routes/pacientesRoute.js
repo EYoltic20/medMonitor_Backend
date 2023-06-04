@@ -55,16 +55,16 @@ router.post('/cuadro_clinico',async (req,res,next)=>{
   try{
     const body = req.body
     const response = await service.new_cuadro(body)
-    res.statusCode(200).json("ok")
+    res.status(200).json("ok")
   }catch(error){
-    next(erro)
+    next(error)
   }
 });
 router.post('/login',async(req,res,next)=>{
   try{
     const body = req.body
-    const response = await service.login(body);
-    res.status (200).json(response)
+    const {id} = await service.login(body);
+    res.status(200).json(id)
   }catch(error){
     next(error)
   }

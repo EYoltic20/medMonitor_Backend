@@ -53,6 +53,10 @@ class Paciente extends Model{
       as:"cuadro",
       foreignKey:"pacienteId"
     })
+    this.hasMany(models.DocInfoPac,{
+      as:"docPacienteInfo",
+      foreignKey:"pacienteId"
+    })
     // this.belongsToMany(models.Doctor,{through:models.Doctor})
   }
   static config(sequelize){
