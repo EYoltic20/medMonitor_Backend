@@ -24,6 +24,15 @@ router.get('/',async (req,res,next)=>{
     next(error)
   }
 })
+router.post('/login',async(req,res,next)=>{
+  try{
+    const body  = req.body
+    const {id} = await service.login(body)
+    res.status(200).json(id)
+  }catch(error){
+    next(error)
+  }
+})
 router.post('/',async(req,res,next)=>{
   try{
     const body = req.body
@@ -44,6 +53,7 @@ router.patch('/nuevo_paciente',async(req,res,next)=>{
     next(error)
   }
 })
+
 router.delete('/borrar',async(req,res,next)=>{
   try{
     const {id} = req.body

@@ -8,6 +8,18 @@ class DoctorService{
     const dr = await models.Doctor.findAll()
     return dr
   }
+  async login(body){
+    var {user,password} = body
+
+    const dr =  models.Doctor.findOne({
+      where:{
+        user: user,
+        password:password
+      }
+    })
+    console.log((dr))
+    return dr
+  }
   async create(body){
     const new_dr = await models.Doctor.create(body)
     return new_dr
