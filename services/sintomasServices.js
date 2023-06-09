@@ -28,8 +28,9 @@ class SintomasService{
     return nuevoSintoma
   }
 
-  async delete(body){
-    const {id,paciente_id} = body
+  async delete(id,paciente_id){
+
+    console.log(id,paciente_id)
     const borrar = await models.Sintoma.destroy({where:{
       id:id,
       paciente_id:paciente_id

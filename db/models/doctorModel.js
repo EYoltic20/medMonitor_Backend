@@ -23,6 +23,11 @@ const doctorSchemas = {
   },correo:{
     allowNull:false,
     type:DataTypes.STRING
+  },createdAt: {
+    allowNull: true,
+    type: DataTypes.DATE,
+    field: 'create_at',
+    defaultValue:Sequelize.NOW
   }
 }
 class Doctor extends Model{
@@ -35,7 +40,7 @@ class Doctor extends Model{
       sequelize,
       tableName:DOCTOR_TABLE,
       modelName:'Doctor',
-      timestamps:true
+      timestamps:false
       }
   }
 }

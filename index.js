@@ -1,5 +1,6 @@
 // const client = require('./conections');
 const express = require('express');
+const path = require('path');
 // const { ClientRequest } = require('http')
 
 const cors = require('cors')
@@ -7,10 +8,12 @@ const {logError,boomErrorHandler,errorHandler} = require('./Middlerwares/errorHa
 // const { port } = require('pg/lib/defaults');
 
 
+
 const app = express();
 app.set('port',process.env.PORT||3001);
 app.use(express.json());
-
+var publicPath = path.resolve(__dirname +'/views');
+app.use(express.static(publicPath));
 const apiRoute = require('./routes');
 
 
@@ -27,7 +30,7 @@ app.use(errorHandler);
 
 
 app.get("/",(req,res)=>{
-  res.send("Hola de mi server")
+  res.sendFile(__dirname+'/views/index.html',options);
 })
 
 

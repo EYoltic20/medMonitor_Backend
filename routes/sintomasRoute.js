@@ -5,6 +5,7 @@ const router = express.Router();
 const SintomasService = require('../services/sintomasServices')
 const validatorHandler = require('../Middlerwares/validatorHandler')
 const {getSitoma,publishSintom,updateSintomValue,endSintom,startSintom} = require('../Schemas/sintomasSchemas');
+const { route } = require('./pacientesRoute');
 const service = new SintomasService();
 
 
@@ -30,6 +31,10 @@ router.get('/:id',async (req,res,next)=>{
   }catch(error){
     next(error)
   }
+
+})
+router.post("/mail",async(req,res,next)=>{
+  const {id,correo} = req.body
 
 })
 // OBTENER UN SINOMA EN ESPECIFICO
@@ -84,8 +89,8 @@ router.patch('/startSintoma',validatorHandler(startSintom),async(req,res,next)=>
 // router
 router.delete('/',async (req,res,next)=>{
   try{
-    const body = req.body
-    const response = await service.delete(parseInt(id))
+    const {id,paciente_id} = req.body
+    const response = await service.delete(id,paciente_id)
     res.status(200).json({'status':response})
   }catch(error){
     next(error)

@@ -25,7 +25,9 @@ const SintomaSchema ={
   },notas:{
     allowNull:true,
     type:DataTypes.ARRAY(DataTypes.STRING)
-  },pacienteId:{
+
+  }
+  ,pacienteId:{
     field:"paciente_id",
     allowNull:false,
     type:DataTypes.INTEGER,
