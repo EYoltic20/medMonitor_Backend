@@ -23,11 +23,9 @@ const doctorSchemas = {
   },correo:{
     allowNull:false,
     type:DataTypes.STRING
-  },createdAt: {
-    allowNull: true,
-    type: DataTypes.DATE,
-    field: 'create_at',
-    defaultValue:Sequelize.NOW
+  },paciente:{
+    allowNull:true,
+    type:DataTypes.ARRAY(DataTypes.INTEGER)
   }
 }
 class Doctor extends Model{

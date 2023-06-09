@@ -17,9 +17,38 @@ const service = new Docservice()
 // Obtener todos los doctores
 router.get('/',async (req,res,next)=>{
   try{
-    console.log("Hey");
+
     const doctores = await service.get_all()
     res.json(doctores);
+  }catch(error){
+    next(error)
+  }
+})
+router.post('/',async(req,res,next)=>{
+  try{
+    const body = req.body
+    const nuevo_doctores = await service.create(body)
+    res.status(200).json("ok")
+  }catch(error){
+    next(error)
+  }
+
+
+})
+router.patch('/nuevo_paciente',async(req,res,next)=>{
+  try{
+    const {id,paciente_id} = req.body
+    const nuevo_paciente = await service.addPaciente(id,paciente_id)
+    res.status(200).json("ok")
+  }catch(error){
+    next(error)
+  }
+})
+router.delete('/borrar',async(req,res,next)=>{
+  try{
+    const {id} = req.body
+    const borrar = await service.borrar(id)
+    res.status(200).json("ok")
   }catch(error){
     next(error)
   }
