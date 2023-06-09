@@ -28,7 +28,7 @@ class PacientesService{
 
 
   async new_cuadro(new_square){
-    const cuadro = await models.Paciente.create(new_square);
+    const cuadro = await models.Cuadro.create(new_square);
     return cuadro
   }
 
@@ -42,6 +42,12 @@ class PacientesService{
    async delete(id){
      const borrarPaciente = await models.Paciente.destroy({where:{id:id}})
      return borrarPaciente
+  }
+  async get_cuadro(id){
+    const cuadro = await models.Cuadro.findAll({where:{
+      paciente_id:id
+    }})
+    return cuadro
   }
 
 

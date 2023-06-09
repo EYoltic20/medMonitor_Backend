@@ -60,6 +60,16 @@ router.post('/cuadro_clinico',async (req,res,next)=>{
     next(error)
   }
 });
+router.get('/:id/cuadro_clinico',async (req,res,next)=>{
+  try{
+    const {id} = req.params
+    console.log(id)
+    const response = await service.get_cuadro(id)
+    res.status(200).json(response)
+  }catch(error){
+    next(error)
+  }
+});
 router.post('/login',async(req,res,next)=>{
   try{
     const body = req.body

@@ -18,7 +18,7 @@ body{
   margin: 20pt;
   padding: 15px;
   width: 95%;
-  height: 50vh;
+  height: auto;
   background-color: #649dad;
   border-radius: 10px;
 }
@@ -26,7 +26,7 @@ body{
   color: white;
 }
 .descripcion{
-  font-size: 20px;
+  font-size: 10px;
   background-color: #85b2bf;
   color: white;
   margin: 10px;

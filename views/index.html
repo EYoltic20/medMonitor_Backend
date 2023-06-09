@@ -41,5 +41,179 @@
       </div>
     </div>
   </section>
+  <!-- Postear Paciente -->
+  <section id ="rutas">
+    <div class = "rutas">
+      <h2 id ="ruta">https://med-monitor-api.herokuapp.com/api/v1/pacientes/</h2>
+      <h1 class  = "metodo">Post</h1>
+      <div class="descripcion">
+        <h3 id = "info"> Nuevo paciente </h3>
+        <p>{</p>
+          <p>"nombre": "",</p>
+          <p>"user": "",</p>
+          <p>"apellidoPaterno": "",</p>
+          <p>"apellidoMaterno": "",</p>
+          <p>"correo": "",</p>
+         <p>"password": "",</p>
+          <p>"gender": "",</p>
+         <p>}</p>
+      </div>
+    </div>
+  </section>
+  <!-- Cuadro Clinico-->
+  <section id ="rutas">
+    <div class = "rutas">
+      <h2 id ="ruta">https://med-monitor-api.herokuapp.com/api/v1/pacientes/</h2>
+      <h1 class  = "metodo">Post</h1>
+      <div class="descripcion">
+        <h3 id = "info"> Nuevo paciente </h3>
+        <p>{</p>
+         <p> "hipertension_arterial": false,</p>
+         <p> "diabetis_mellitus":false,</p>
+          <p>"colesterol_elevado":false,</p>
+         <p> "obesidad":false,</p>
+          <p>"consumo_tabaco":false,</p>
+          <p>"sedentarismo":false,</p>
+          "mala_alimentacion":false,
+          <p>"mal_sleeping":false,</p>
+          <p>"depresion":false,</p>
+          <p>"anxiety":false,</p>
+          "<p>pacienteId":1</p>
+      <p>}</p>
+      </div>
+    </div>
+  </section>
+<!-- Cuadro Clinico-->
+  <section id ="rutas">
+    <div class = "rutas">
+      <h2 id ="ruta">https://med-monitor-api.herokuapp.com/api/v1/pacientes/:id/cuadro_clinico</h2>
+      <h1 class  = "metodo">Get</h1>
+      <div class="descripcion">
+        <h3 id = "info"> Nuevo paciente </h3>
+
+      </div>
+    </div>
+  </section>
+  <!-- Encontrar un solo usuario-->
+  <section id ="rutas">
+    <div class = "rutas">
+      <h2 id ="ruta">https://med-monitor-api.herokuapp.com/api/v1/pacientes/:id/</h2>
+      <h1 class  = "metodo">Get</h1>
+      <div class="descripcion">
+        <h3 id = "info"> Encontrar paciente </h3>
+
+      </div>
+    </div>
+  </section>
+    <!-- Borrar usuario-->
+    <section id ="rutas">
+      <div class = "rutas">
+        <h2 id ="ruta">https://med-monitor-api.herokuapp.com/api/v1/pacientes/:id/</h2>
+        <h1 class  = "metodo">Delete</h1>
+        <div class="descripcion">
+          <h3 id = "info">Borrar cuenta </h3>
+        </div>
+      </div>
+    </section>
+    <!-- Borrar usuario-->
+    <section id ="rutas">
+      <div class = "rutas">
+        <h2 id ="ruta">https://med-monitor-api.herokuapp.com/api/v1/pacientes/:id/</h2>
+        <h1 class  = "metodo">Delete</h1>
+        <div class="descripcion">
+          <h3 id = "info">Borrar cuenta </h3>
+        </div>
+      </div>
+    </section>
+      <!-- Entoar sintomas user-->
+    <section id ="rutas">
+      <div class = "rutas">
+        <h2 id ="ruta">https://med-monitor-api.herokuapp.com/api/v1/sintomas/:id/</h2>
+        <h1 class  = "metodo">Get</h1>
+        <div class="descripcion">
+          <h3 id = "info">Sintomas Usuario </h3>
+        </div>
+      </div>
+    </section>
+          <!-- postear Sintoma sintomas user-->
+    <section id ="rutas">
+      <div class = "rutas">
+        <h2 id ="ruta">https://med-monitor-api.herokuapp.com/api/v1/sintomas/</h2>
+        <h1 class  = "metodo">Post</h1>
+        <div class="descripcion">
+          <h3 id = "info">Nuevo sintoma</h3>
+          <p> {</p>
+            <p> "name": String,</p>
+            <p> "intensidad": [Int],</p>
+            <p> "recordar": Bool,</p>
+            <p> "terminarSintoma": Bool,</p>
+            <p> "notas": [String],</p>
+            <p> "pacienteId": INT</p>
+            <p>}</p>
+        </div>
+      </div>
+    </section>
+    <!-- Agregar valores Sintoma sintomas user-->
+    <section id ="rutas">
+      <div class = "rutas">
+        <h2 id ="ruta">https://med-monitor-api.herokuapp.com/api/v1/sintomas/intensidad</h2>
+        <h1 class  = "metodo">Patch</h1>
+        <div class="descripcion">
+          <h3 id = "info">Modificar sintoma</h3>
+          <p> {</p>
+            <p> "id": Int,</p>
+            <p> "intensidad": [Int],</p>
+            <p> "notas": [String],</p>
+            <p> "pacienteId": INT</p>
+            <p>}</p>
+        </div>
+      </div>
+    </section>
+   <!-- Acabar sintoma-->
+   <section id ="rutas">
+    <div class = "rutas">
+      <h2 id ="ruta">https://med-monitor-api.herokuapp.com/api/v1/sintomas/endSintom</h2>
+      <h1 class  = "metodo">Patch</h1>
+      <div class="descripcion">
+        <h3 id = "info">terminar sintoma</h3>
+        <p> {</p>
+          <p> "id": Int,</p>
+          <p> "terminarSintoma": Bool,</p>
+          <p> "pacienteId": INT</p>
+          <p>}</p>
+      </div>
+    </div>
+  </section>
+  <!-- Acabar sintoma-->
+     <section id ="rutas">
+      <div class = "rutas">
+        <h2 id ="ruta">https://med-monitor-api.herokuapp.com/api/v1/sintomas/startSintom</h2>
+        <h1 class  = "metodo">Patch</h1>
+        <div class="descripcion">
+          <h3 id = "info">Comenzar Sintoma sintoma</h3>
+          <p> {</p>
+            <p> "id": Int,</p>
+            <p> "terminarSintoma": Bool,</p>
+            <p> "pacienteId": INT</p>
+            <p>}</p>
+        </div>
+      </div>
+    </section>
+    <!-- Borrar sintoma-->
+    <section id ="rutas">
+      <div class = "rutas">
+        <h2 id ="ruta">https://med-monitor-api.herokuapp.com/api/v1/sintomas/</h2>
+        <h1 class  = "metodo">Delte</h1>
+        <div class="descripcion">
+          <h3 id = "info">Borrar sintom</h3>
+          <p> {</p>
+            <p> "id": Int,</p>
+            <p> "pacienteId": INT</p>
+            <p>}</p>
+        </div>
+      </div>
+    </section>
+
+
 </body>
 </html>

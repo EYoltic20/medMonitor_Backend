@@ -36,11 +36,11 @@ class SintomasService{
       paciente_id:paciente_id
     }})
   }
-  async updateSintoma(id,changes){
-    const sintoma = models.Sintoma.getSintoma(id)
-    const response = await sintoma.update(changes)
-    return response
-  }
+  // async updateSintoma(id,changes){
+  //   const sintoma = models.Sintoma.getSintoma(id)
+  //   const response = await sintoma.update(changes)
+  //   return response
+  // }
   //Terminar trackeo de sintoma
   async endSintom(body){
     const {id,pacienteId} = body;
